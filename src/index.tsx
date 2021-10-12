@@ -883,13 +883,13 @@ const ModalizeBase = (
   }, [adjustToContentHeight, modalHeight, screenHeight]);
 
   React.useEffect(() => {
-    Keyboard.addListener('keyboardDidShow', handleKeyboardShow);
-    Keyboard.addListener('keyboardDidHide', handleKeyboardHide);
+    const keyboardShowListener = Keyboard.addListener('keyboardDidShow', handleKeyboardShow);
+    const keyboardHideListener = Keyboard.addListener('keyboardDidHide', handleKeyboardHide);
 
     return (): void => {
       backButtonListenerRef.current?.remove();
-      Keyboard.removeListener('keyboardDidShow', handleKeyboardShow);
-      Keyboard.removeListener('keyboardDidHide', handleKeyboardHide);
+      keyboardShowListener.remove();
+      keyboardHideListener.remove();
     };
   }, []);
 
