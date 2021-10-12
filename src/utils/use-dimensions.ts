@@ -9,9 +9,9 @@ export const useDimensions = (): ScaledSize => {
   };
 
   React.useEffect(() => {
-    const dimensionChangeListener = Dimensions.addEventListener('change', onChange);
+    Dimensions.addEventListener('change', onChange);
 
-    return () => dimensionChangeListener.remove();
+    return (): void => Dimensions.removeEventListener('change', onChange);
   }, []);
 
   return dimensions;
