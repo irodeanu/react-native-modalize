@@ -11,7 +11,7 @@ export const useDimensions = (): ScaledSize => {
   React.useEffect(() => {
     const dimensionChangeListener = Dimensions.addEventListener('change', onChange);
 
-    return (): void => dimensionChangeListener.remove();
+    return () => dimensionChangeListener.remove();
   }, []);
 
   return dimensions;
